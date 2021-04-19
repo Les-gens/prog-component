@@ -1,18 +1,17 @@
-import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import React from "react"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 
-import { Home } from '../screens'
-function App () {
+import { Home, Profile } from "screens/"
+function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route path="/me" component={Profile} />
+          <Route path="/" component={Home} />
         </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   )
 }
 
