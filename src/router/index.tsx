@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Error from 'screens/errors/error'
+import Error from 'screens/Errors/error'
 import { Home, Profile } from 'screens/'
 
 function App () {
