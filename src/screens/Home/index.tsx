@@ -2,7 +2,7 @@ import React from 'react'
 import logo from './logo.svg'
 import './index.css'
 
-function Home () {
+export default function Home () {
   return (
     <div className="App">
       <header className="App-header">
@@ -22,5 +22,3 @@ function Home () {
     </div>
   )
 }
-
-export default Home
