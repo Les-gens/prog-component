@@ -18,11 +18,11 @@ async function authUser (username: String, password: String) {
 
 }
 
-async function addFriend ( userID: Number, friendID : Number) {
+async function addFriend (userID: Number, friendID : Number) {
 
 }
 
-async function acceptFriendRequest ( userID: Number, friendID: Number) {
+async function acceptFriendRequest (userID: Number, friendID: Number) {
 
 }
 
