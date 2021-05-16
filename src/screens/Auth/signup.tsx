@@ -20,7 +20,7 @@ export default function SignUp ({setToken}: Props) {
   }
 
   return (
-    <div className="w-full max-w-xs">
+    <div className="max-w-xs mt-16 m-auto">
         <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <h1 className='text-center text-xl'>Signup</h1>
             <div className="mb-4">
