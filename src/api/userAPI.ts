@@ -11,7 +11,7 @@ function getUserFriends(userID: number):User[]{
 }
 
 function getUserPosts(userId: number): Post[]{
-  return [new Post(1, 'Post 1'), new Post(2, 'Post 2')]
+  return [new Post(1, 'Post 1', 'Hello everybody, my hollydays are super cool'), new Post(2, 'Post 2', 'Hello everybody, my hollydays are super cool')]
 }
 async function updateUser(userID: Number, userInformation: Object) {}
 

@@ -17,7 +17,7 @@ export default function Error (props: IError) {
                             {props.errorDescription}
                         </div>
                         <div>
-                            <Link to='/'>
+                            <Link to='/home'>
                                 <button className="bg-red-600 hover:bg-red-500 text-white font-bold text-xl py-2 px-4 rounded">
                                     Return Home
                                 </button>
