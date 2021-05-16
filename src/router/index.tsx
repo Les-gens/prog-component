@@ -1,8 +1,8 @@
-import React from "react"
-import { BrowserRouter, Route, Switch } from "react-router-dom"
+import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { Home, Profile } from "screens/"
-import Error from "screens/Errors/error"
+import { Home, Profile } from 'screens/'
+import Error from 'screens/Errors/error'
 function App() {
   return (
     <BrowserRouter>
