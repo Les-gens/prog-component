@@ -3,6 +3,7 @@ import { Post } from 'models/Post.js'
 import { User } from 'models/User'
 import React, { useEffect, useState } from 'react'
 import {FriendListItem} from './components/index.js'
+import NavBar from 'screens/Home/navbar'
 
 const Profile = () => {
   const [friend_list, setFriendList] = useState<User[]>([])
@@ -18,8 +19,9 @@ const Profile = () => {
   }, [])
   return (
     <div className="w-full h-full">
+      <NavBar/>
 
-      <div className='flex flex-col w-full h-32 bg-gray-800  justify-end '>
+      <div className='flex flex-col w-full h-32 bg-blurple  justify-end '>
         <div className='flex align-center h-1/3 pl-4'>
 
           <h1 className='text-white text-3xl pr-4 '>{user ? user.username : 'Loading...'}</h1>

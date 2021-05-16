@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { SearchIcon, UserCircleIcon } from '@heroicons/react/solid'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
-import { logout } from 'api/auth'
 import { Link } from 'react-router-dom'
 
 function classNames (...classes: string[]) {
