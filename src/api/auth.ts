@@ -32,8 +32,8 @@ function setStorageToken(token: any):void{
 function getToken(): string{
   const tokenString = sessionStorage.getItem('token');
   const userToken = JSON.parse(tokenString || '{}');
-  // return userToken?.token
-  return userToken
+  return userToken?.token
+  // return userToken
 }
 
 export {login, logout, signup, setStorageToken, getToken}

@@ -7,14 +7,14 @@ import Error from 'screens/Errors/error'
 
 function App() {
   // const [token, setToken] = useState<string>()
-  const [token, setToken] = useState(getToken())
+  const [token, setToken] = useState<any>(getToken())
   useEffect(()=>{}, [token])
-  console.log(token)
+  console.log('token :',  token)
   return (
     <BrowserRouter>
       <div>
         
-          {getToken() !== '' ? 
+          {getToken() !== '' && getToken() !== undefined ? 
             <Switch>
               <Route path="/logout" exact >
                 {()=>{

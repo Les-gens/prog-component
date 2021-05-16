@@ -1,9 +1,9 @@
-import { setStorageToken, signup } from 'api/auth';
+import { getToken, setStorageToken, signup } from 'api/auth';
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 interface Props {
-  setTokenState: Dispatch<SetStateAction<string>>
+  setTokenState: any
 }
 
 export default function SignUp ({setTokenState}: Props) {
@@ -16,8 +16,8 @@ export default function SignUp ({setTokenState}: Props) {
       username,
       password
     });
-    setStorageToken('token123')
-    setTokenState('token123');
+    setStorageToken({token: 'token123'})
+    setTokenState(getToken())
   }
 
   return (

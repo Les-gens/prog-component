@@ -1,9 +1,9 @@
-import { login } from 'api/auth';
+import { getToken, login, setStorageToken } from 'api/auth';
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 interface Props {
-  setTokenState: Dispatch<SetStateAction<string>>
+  setTokenState: any
 }
 
 export default function Login ({setTokenState}: Props) {
@@ -16,7 +16,8 @@ export default function Login ({setTokenState}: Props) {
       username,
       password
     });
-    setTokenState('token123');
+    setStorageToken({token: 'token123'})
+    setTokenState(getToken())
   }
 
   return (
