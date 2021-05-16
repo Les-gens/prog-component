@@ -10,18 +10,18 @@ function setToken(token: any):void{
 
 function getToken(): string{
   const tokenString = sessionStorage.getItem('token');
-  const userToken = JSON.parse(tokenString || '');
+  const userToken = JSON.parse(tokenString || '{}');
   return userToken?.token
 }
 
 function App() {
   // const [token, setToken] = useState<string>()
-  // setToken('')
+  setToken('')
   // sessionStorage.clear()
   const token = getToken()
-  // if(!token){
-  //   return <Login setToken={setToken} />
-  // }
+  if(token !== ''){
+    return <Login setToken={setToken} />
+  }
 
   return (
     <BrowserRouter>
