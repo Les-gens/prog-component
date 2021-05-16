@@ -10,8 +10,13 @@ async function login(credentials:{ username: string, password: string }){
   return 'token123'
 }
 
-async function signup() {
+async function signup(credentials:{ username: string, password: string }) {
+  return 'token123'
 
+}
+
+function logout(){
+  sessionStorage.clear()
 }
 
 export {login, signup}

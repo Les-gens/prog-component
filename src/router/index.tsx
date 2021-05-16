@@ -20,7 +20,29 @@ function App() {
   // sessionStorage.clear()
   const token = getToken()
   if(token !== ''){
-    return <Login setToken={setToken} />
+    return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/signup" exact  >
+          <Signup setToken={setToken} />
+        </Route>
+        <Route path="/" exact>
+          <Login setToken={setToken} />
+        </Route>
+        <Route
+            component={() => (
+              <Error
+                errorCode={404}
+                errorTitle={`Oops page not found!`}
+                errorDescription={`Oops ! The page you're trying to see has either been moved/deleted or does not exist`}
+              ></Error>
+            )}
+          />
+      </Switch>
+    </BrowserRouter>
+
+    )
+    // return <Login setToken={setToken} />
   }
 
   return (
