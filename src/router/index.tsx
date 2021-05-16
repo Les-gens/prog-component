@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { Home, Profile } from 'screens/'
+import { Home, Profile, Signup, Login } from 'screens/'
 import Error from 'screens/Errors/error'
 function App() {
   return (
@@ -9,6 +9,8 @@ function App() {
       <div>
         <Switch>
           <Route path="/me" exact component={Profile} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
           <Route path="/" exact component={Home} />
           <Route
             component={() => (
