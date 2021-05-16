@@ -29,7 +29,7 @@ const Profile = () => {
       </div>
 
 
-      <div className='flex flex-row w-full bg-red-200 justify-around'>
+      <div className='flex flex-row w-full justify-around'>
         <div className='w-2/12'></div>
         <div className='flex flex-col w-8/12 items-center'>
           <h1 className='text-3xl'>Posts</h1>
@@ -37,7 +37,7 @@ const Profile = () => {
             post_list.map( (post, idx) => <div key={'post_'+idx}>{post.title}</div>)
           : ''}
         </div>
-        <div id='friend_list' className='w-2/12 flex flex-col bg-green-200 self-end'>
+        <div id='friend_list' className='w-2/12 flex flex-col self-end'>
 
           <h2 className='text-2xl'>Friends</h2>
           {friend_list !== [] ? (
