@@ -7,7 +7,7 @@ interface Props {
 
 const FriendListItem = ({user}: Props) => {
   return (
-    <div>
+    <div className='border-1 border-gray-300'>
       {user.username}
     </div>
   )

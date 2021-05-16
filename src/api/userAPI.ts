@@ -1,3 +1,4 @@
+import { Post } from 'models/Post'
 import { User } from 'models/User'
 
 async function getAllUsers() {}
@@ -9,6 +10,9 @@ function getUserFriends(userID: number):User[]{
   return [new User(1, 'Ami 1'), new User(2, 'Ami 2'),new User(3, 'Ami 3')]
 }
 
+function getUserPosts(userId: number): Post[]{
+  return [new Post(1, 'poet'), new Post(2, 'poetpoet')]
+}
 async function updateUser(userID: Number, userInformation: Object) {}
 
 async function deleteUser(userID: Number) {}
@@ -23,6 +27,7 @@ export {
   getAllUsers,
   getUser,
   getUserFriends,
+  getUserPosts,
   updateUser,
   deleteUser,
   authUser,
