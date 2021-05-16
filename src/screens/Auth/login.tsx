@@ -3,10 +3,10 @@ import React, { Dispatch, SetStateAction, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 interface Props {
-  setToken: Dispatch<SetStateAction<string | undefined>>
+  setTokenState: Dispatch<SetStateAction<string>>
 }
 
-export default function Login ({setToken}: Props) {
+export default function Login ({setTokenState}: Props) {
   const [username, setUserName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -16,7 +16,7 @@ export default function Login ({setToken}: Props) {
       username,
       password
     });
-    setToken('token123');
+    setTokenState('token123');
   }
 
   return (

@@ -2,6 +2,8 @@ import React, { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { SearchIcon, UserCircleIcon } from '@heroicons/react/solid'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
+import { logout } from 'api/auth'
+import { Link } from 'react-router-dom'
 
 function classNames (...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -106,15 +108,10 @@ export default function NavBar () {
                             </Menu.Item>
                             <Menu.Item>
                               {({ active }) => (
-                                <a
-                                  href="#"
-                                  className={classNames(
+                                <Link to='/logout' className={classNames(
                                     active ? 'bg-gray-100' : '',
                                     'block px-4 py-2 text-sm text-gray-700'
-                                  )}
-                                >
-                                  Sign out
-                                </a>
+                                )}/>
                               )}
                             </Menu.Item>
                           </Menu.Items>
