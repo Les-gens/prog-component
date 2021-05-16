@@ -24,6 +24,7 @@ function App() {
               </Route>
               <Route path="/me" exact component={Profile} />
               <Route path="/home" exact component={Home} />
+              <Route path="/" exact component={Home} />
               <Route
                 component={() => (
                   <Error
