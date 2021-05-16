@@ -19,7 +19,7 @@ function App() {
               <Route path="/logout" exact >
                 {()=>{
                   logout(setToken)
-                  return <Redirect to={{ pathname: '/'}}/>
+                  return <Redirect to={{ pathname: '/home'}}/>
                 }}
               </Route>
               <Route path="/me" exact component={Profile} />

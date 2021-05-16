@@ -24,7 +24,7 @@ const Profile = () => {
 
           <h1 className='text-white text-3xl pr-4 '>{user ? user.username : 'Loading...'}</h1>
           <button className='text-green-600 self-center rounded-2xl border-green-600 border-2 h-6 w-28 hover:bg-gray-700'>+ Add Friend</button>
-          <button className='flex text-blue-400 self-center rounded-2xl border-blue-400 border-2 h-6 w-14 justify-center hover:bg-gray-700'>Friend</button>
+          {/* <button className='flex text-blue-400 self-center rounded-2xl border-blue-400 border-2 h-6 w-14 justify-center hover:bg-gray-700'>Friend</button> */}
         </div>
       </div>
 
