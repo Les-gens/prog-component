@@ -1,6 +1,7 @@
-import { getUser } from 'api/userAPI'
+import { getUser, getUserFriends } from 'api/userAPI'
 import { User } from 'models/User'
 import React, { useEffect, useState } from 'react'
+import FriendListItem from './components/FriendListItem'
 
 const Profile = () => {
   const [friend_list, setFriendList] = useState<User[]>([])
@@ -8,14 +9,21 @@ const Profile = () => {
 
   useEffect(() => {
     setUser(getUser(1))
-    setFriendList((prevFriends) => [...prevFriends, new User(1, 'toto')])
-    setFriendList((prevFriends) => [...prevFriends, new User(2, 'titi')])
+    // const l = getUserFriends(1)
+    // console.log(l)
+    setFriendList(getUserFriends(1))
   }, [])
   return (
     <div className="w-full h-full">
-      <h1></h1>
+      <div className='flex flex-col w-full h-32 bg-green-800  justify-end pl-4 pb-4'>
+        <button>+ Add Friend</button>
+        <h1 className='text-white text-3xl'>{user ? user.username : 'Loading...'}</h1>
+      </div>
+
+      {friend_list !== [] ? '' : ''}
+
       {friend_list !== [] && friend_list[0] !== undefined ? (
-        <div id="friends_list">{friend_list[0].username}</div>
+        friend_list.map( (friend,idx) => <FriendListItem key={idx} user={friend}/>)
       ) : (
         ''
       )}
