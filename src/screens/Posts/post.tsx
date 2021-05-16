@@ -3,7 +3,6 @@ import React from 'react'
 interface IPost {
     title?: String,
     content?: String,
-    author?: String,
     isPrivate?: Boolean,
     isLoading: Boolean,
 
@@ -42,8 +41,7 @@ export default function Post (props: IPost) {
                 </div>
               : ''}
             </div>
-            <div className="author italic font-bold ">By: {props.author}</div>
-            <div className="font-medium">{props.content}</div>
+            <div className="text-xl">{props.content}</div>
         </div>
     )
   }
