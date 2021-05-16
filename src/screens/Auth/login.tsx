@@ -15,7 +15,7 @@ export default function Login ({setToken}: Props) {
       username,
       password
     });
-    setToken(token);
+    setToken('token123');
   }
 
   return (

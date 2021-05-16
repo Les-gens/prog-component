@@ -16,11 +16,12 @@ function getToken(): string{
 
 function App() {
   // const [token, setToken] = useState<string>()
-  setToken('')
+  // setToken('')
+  // sessionStorage.clear()
   const token = getToken()
-  if(token === ''){
-    return <Login setToken={setToken} />
-  }
+  // if(!token){
+  //   return <Login setToken={setToken} />
+  // }
 
   return (
     <BrowserRouter>
