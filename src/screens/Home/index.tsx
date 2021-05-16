@@ -8,7 +8,12 @@ export default function Home () {
       <header className="App-header">
        <Navbar></Navbar>
       </header>
+      <div className="py-16">
+        <div className="font-bold text-6xl text-center">
+          Latest Posts
       <Post isLoading={true}></Post>
+        </div>
+      </div>
     </div>
   )
 }
