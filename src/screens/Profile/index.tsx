@@ -45,7 +45,7 @@ const Profile = () => {
         <div className='flex flex-col w-8/12 items-center mt-6'>
           <h1 className='text-3xl'>Posts</h1>
           {post_list !== [] ?
-            post_list.map( (post, idx) => <Post key={'post_'+idx} title={post.title} content={post.text} isLoading={false}></Post>)
+            post_list.map( (post, idx) => <Post key={'post_'+idx} isPrivate={post.private_post} title={post.title} content={post.text} isLoading={false}></Post>)
           : ''}
         </div>
         <div id='friend_list' className='w-2/12 flex flex-col self-end'>
