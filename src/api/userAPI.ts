@@ -1,10 +1,17 @@
 import { Post } from 'models/Post'
 import { User } from 'models/User'
+import axios from 'axios'
+
+const SERVERURL = process.env.REACT_APP_SERVER_URL
+
 
 async function getAllUsers() {}
 
-/*async*/ function getUser(userID: number): User {
-  return new User(userID, 'Jean-Jacques')
+async function getUser(userID: number) {
+  const res = await axios.get(`${SERVERURL}/users/${userID}`)
+  console.log(res.data)
+  return res.data
+  // return new User(userID, 'Jean-Jacques')
 }
 function getUserFriends(userID: number):User[]{
   return [new User(1, 'Ami 1'), new User(2, 'Ami 2'),new User(3, 'Ami 3')]

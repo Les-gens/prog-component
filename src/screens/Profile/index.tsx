@@ -11,9 +11,12 @@ const Profile = () => {
   const [user, setUser] = useState<User>()
 
   useEffect(() => {
-    setUser(getUser(1))
-    // const l = getUserFriends(1)
-    // console.log(l)
+    async function fetchData(){
+      const user = await getUser(1)
+      setUser(user)
+    }
+    fetchData()
+
     setFriendList(getUserFriends(1))
     setPostList(getUserPosts(1))
   }, [])

@@ -34,7 +34,7 @@ export default function Home () {
   return (
     <div className="App">
       <header className="App-header">
-       <Navbar></Navbar>
+       <Navbar/>
       </header>
       <div className="py-16">
         <div className="font-bold text-6xl text-center">
