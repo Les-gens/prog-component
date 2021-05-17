@@ -24,6 +24,7 @@ export default function Home () {
             )
           }     
         })
+        postsArray.reverse()
         setPosts(postsArray)
       }
       }
