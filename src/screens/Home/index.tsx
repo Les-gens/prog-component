@@ -5,6 +5,8 @@ import { getAllPosts } from 'api/postAPI'
 
 export default function Home () {
 
+
+
   const [posts, setPosts] =  useState([
     <Post key={0} isLoading={true}></Post>,
     <Post key={1} isLoading={true}></Post>,
@@ -31,11 +33,13 @@ export default function Home () {
      
       fetchData()
   }, [])
+
+  useEffect(() => {}, [posts])
   
   return (
     <div className="App">
       <header className="App-header">
-       <Navbar></Navbar>
+       <Navbar posts={posts} setPosts={setPosts}></Navbar>
       </header>
       <div className="py-16">
         <div className="font-bold text-6xl text-center">

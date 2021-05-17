@@ -1,14 +1,45 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, ReactComponentElement } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { SearchIcon, UserCircleIcon } from '@heroicons/react/solid'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
+import { getAllPosts } from 'api/postAPI'
+import Post from 'screens/Posts/post'
+const _ = require('lodash')
+
+
 
 function classNames (...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function NavBar () {
+interface navBarProps {
+  posts?: any, 
+  setPosts?: Function
+}
+
+export default function NavBar (props: navBarProps) {
+
+  async function handleChange(search: string) {
+      if(props.posts) {
+        console.log(search);
+        
+        const allPosts = await getAllPosts()
+        const postsArray: any = []
+        if(allPosts != null) {
+          const postsFormatted = allPosts.filter((post: any) => post.title.toLowerCase().startsWith(search.toLowerCase()))
+          postsFormatted.forEach((post: any) => {
+            if(!post.private_post) {
+              postsArray.push(
+                <Post title={post.title} content={post.text} isLoading={false}></Post>
+              )
+            }     
+          })
+          postsArray.reverse()
+          if(props.setPosts) props.setPosts(postsArray)
+        }
+      } 
+  }
   return (
     <Disclosure as="nav" className="bg-blurple">
       {({ open }) => (
@@ -32,6 +63,7 @@ export default function NavBar () {
                     <input
                       id="search"
                       name="search"
+                      onChange={_.debounce((e:any) => handleChange(e.target.value), 1000)}
                       className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-gray-700 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 sm:text-sm"
                       placeholder="Search"
                       type="search"
