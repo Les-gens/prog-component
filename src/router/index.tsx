@@ -4,6 +4,7 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
 
 import { Home, Profile, Signup, Login } from 'screens/'
 import Error from 'screens/Errors/error'
+import CreatePost from 'screens/Posts/createPost'
 
 function App() {
   // const [token, setToken] = useState<string>()
@@ -25,6 +26,7 @@ function App() {
               <Route path="/me" exact component={Profile} />
               <Route path="/home" exact component={Home} />
               <Route path="/" exact component={Home} />
+              <Route path="/createPost" exact component={CreatePost} />
               <Route
                 component={() => (
                   <Error

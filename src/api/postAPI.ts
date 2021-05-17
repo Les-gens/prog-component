@@ -10,6 +10,13 @@ async function getAllPosts () {
     return res.data._embedded.postEntities ?? null
 }
 
+async function createPost(postInformation : Object) {
+    const postsFormatted = {...postInformation, user_id: 1, private_post: false}
+    const res = await axios.post(`${SERVERURL}/posts`, postsFormatted)
+    console.log(res)
+    return res
+}
+
 async function getPost (postID: Number) {
 
 }
@@ -22,4 +29,4 @@ async function deletePost (postID: Number) {
 
 }
 
-export { getAllPosts, getPost, updatePost, deletePost }
+export { getAllPosts, createPost, getPost, updatePost, deletePost }
