@@ -1,14 +1,45 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, ReactComponentElement } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { SearchIcon, UserCircleIcon } from '@heroicons/react/solid'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
+import { getAllPosts } from 'api/postAPI'
+import Post from 'screens/Posts/post'
+const _ = require('lodash')
+
+
 
 function classNames (...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function NavBar () {
+interface navBarProps {
+  posts?: any, 
+  setPosts?: Function
+}
+
+export default function NavBar (props: navBarProps) {
+
+  async function handleChange(search: string) {
+      if(props.posts) {
+        console.log(search);
+        
+        const allPosts = await getAllPosts()
+        const postsArray: any = []
+        if(allPosts != null) {
+          const postsFormatted = allPosts.filter((post: any) => post.title.toLowerCase().startsWith(search.toLowerCase()))
+          postsFormatted.forEach((post: any) => {
+            if(!post.private_post) {
+              postsArray.push(
+                <Post title={post.title} content={post.text} isLoading={false}></Post>
+              )
+            }     
+          })
+          postsArray.reverse()
+          if(props.setPosts) props.setPosts(postsArray)
+        }
+      } 
+  }
   return (
     <Disclosure as="nav" className="bg-blurple">
       {({ open }) => (
@@ -32,6 +63,7 @@ export default function NavBar () {
                     <input
                       id="search"
                       name="search"
+                      onChange={_.debounce((e:any) => handleChange(e.target.value), 1000)}
                       className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-gray-700 text-gray-300 placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 sm:text-sm"
                       placeholder="Search"
                       type="search"
@@ -79,12 +111,25 @@ export default function NavBar () {
                             static
                             className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                           >
+                              <Menu.Item>
+                              {({ active }) => (
+                                <a
+                                  href="createPost"
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'block px-4 py-2 text-sm text-gray-700'
+                                  )}
+                                >
+                                  Add blog post
+                                </a>
+                              )}
+                            </Menu.Item>
                             <Menu.Item>
                               {({ active }) => (
                                 <Link to='/me' className={classNames(
                                     active ? 'bg-gray-100' : '',
                                     'block px-4 py-2 text-sm text-gray-700'
-                                )}>Logout</Link>
+                                )}>Your Profile</Link>
                               )}
                             </Menu.Item>
                             <Menu.Item>
@@ -109,7 +154,7 @@ export default function NavBar () {
             <div className="px-2 pt-2 pb-3 space-y-1">
               {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
               <a
-                href="#"
+                href="createPost"
                 className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
               >
                 Add Blog post
@@ -126,17 +171,17 @@ export default function NavBar () {
                 </div>
               </div>
               <div className="mt-3 px-2 space-y-1">
+              <a
+                  href="createPost"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-white hover:bg-gray-700"
+                >
+                  Create Post
+                </a>
                 <a
-                  href="#"
+                  href="me"
                   className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-white hover:bg-gray-700"
                 >
                   Your Profile
-                </a>
-                <a
-                  href="#"
-                  className="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-white hover:bg-gray-700"
-                >
-                  Settings
                 </a>
                 <a
                   href="#"
